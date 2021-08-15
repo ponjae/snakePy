@@ -16,7 +16,6 @@ class Snake:
         """
         self.segments = []
         self._create_init_snakes()
-        self.head = self.segments[0]
 
     def _create_init_snakes(self):
         """
@@ -24,6 +23,7 @@ class Snake:
         """
         for position in STARTING_POSITIONS:
             self._add_segment(position)
+        self.head = self.segments[0]
 
     def _add_segment(self, pos):
         """
@@ -34,6 +34,12 @@ class Snake:
         new_seg.color("white")
         new_seg.goto(pos)
         self.segments.append(new_seg)
+
+    def reset(self):
+        for segement in self.segments:
+            segement.goto((1000, 1000))
+        self.segments.clear()
+        self._create_init_snakes()
 
     def extend(self):
         """
