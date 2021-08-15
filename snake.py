@@ -36,6 +36,9 @@ class Snake:
         self.segments.append(new_seg)
 
     def reset(self):
+        """
+        Send segments outside board when new game starts
+        """
         for segement in self.segments:
             segement.goto((1000, 1000))
         self.segments.clear()
